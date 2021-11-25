@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import PostMessage from '../models/postMessage.js'
 
 
+// Gets All Posts //
 export const getPosts = async (req, res) => {
     try{
         const postMessages = await PostMessage.find()
@@ -15,6 +16,7 @@ export const getPosts = async (req, res) => {
     }
 }
 
+// Used to create new post //
 export const createPost = async (req, res) => {
     const post = req.body
 
@@ -30,6 +32,7 @@ export const createPost = async (req, res) => {
     }
 }
 
+// Used to update Post //
 export const updatePost = async (req, res) => {
     const { id: _id } = req.params
     const post = req.body
@@ -41,6 +44,7 @@ export const updatePost = async (req, res) => {
     res.json(updatedPost)
 }
 
+// Used to delete Post //
 export const deletePost = async (req, res) => {
     const { id } = req.params
 
@@ -51,6 +55,7 @@ export const deletePost = async (req, res) => {
     res.json({ message: 'Post deleted successfully' })
 }
 
+// Increase Likes on post //
 export const likePost = async (req, res) => {
 
     const { id } = req.params
